@@ -3,7 +3,6 @@ import s from './ContacnList.module.css';
 import delbutton from '../images/baseline_delete_forever_black_24dp.png';
 
 export default function ContactLIst({ contacts, onDelete }) {
-  // console.log(contacts);
   return (
     <ol className={s.contactlist}>
       {contacts.map(({ id, name, number }) => (

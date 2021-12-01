@@ -10,14 +10,11 @@ export default class ContactForm extends Component {
 
   handleChange = event => {
     const { name, value } = event.currentTarget;
-    // console.log(event.currentTarget)
     this.setState({ [name]: value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-
-    // console.log(this.state)
     this.props.onSubmit(this.state);
     this.resetForm();
   };

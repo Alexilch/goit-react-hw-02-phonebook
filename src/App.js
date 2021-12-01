@@ -25,7 +25,6 @@ class App extends Component {
 
   formHandler = data => {
     const { name, number } = data;
-    // console.log(data);
     const newContact = {
       id: nanoid(5),
       name,
@@ -48,7 +47,6 @@ class App extends Component {
     this.setState(({ contacts }) => ({
       contacts: [...contacts, newContact],
     }));
-    // console.log(contacts);
   };
 
   contactFilter = () => {
@@ -60,14 +58,14 @@ class App extends Component {
     );
   };
 
-  changeFilter = event => {
-    this.setState({ filter: event.currentTarget.value });
-  };
-
   contactDelete = id => {
     this.setState(({ contacts }) => ({
       contacts: contacts.filter(contact => contact.id !== id),
     }));
+  };
+
+  onFilter = event => {
+    this.setState({ filter: event.currentTarget.value });
   };
 
   render() {
@@ -77,7 +75,7 @@ class App extends Component {
         <Title title={'Phone book'} />
         <ContactForm onSubmit={this.formHandler} />
         <Title title={'Contacts'} />
-        <Filter value={this.filter} onChange={this.changeFilter} />
+        <Filter value={this.filter} onChange={this.onFilter} />
         <ContactLIst contacts={contactsFilter} onDelete={this.contactDelete} />
       </div>
     );
