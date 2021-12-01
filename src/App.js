@@ -8,14 +8,16 @@ class App extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
 
   formHandler = data => {
-    const { name } = data;
+    const { name, number } = data;
     console.log(data);
     const newContact = {
       id: nanoid(5),
       name,
+      number,
     };
     const { contacts } = this.state;
 
