@@ -1,4 +1,28 @@
 .contactlist {
   /* list-style: none; */
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contactlistitem {
+  margin: 10px;
+  align-content: center;
+}
+
+.deletebutton {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  border: transparent;
+  border-radius: 50px;
+  /* background-repeat: no-repeat;
+  background-size: auto; */
+  background-size: cover;
+}
+.deletebutton:hover {
+  background-color: rgba(45, 35, 66, 0.4);
+  transform: scale(1.08);
+}
+.deletebutton:active {
+  background-color: rgba(118, 74, 214, 0.4);
 }

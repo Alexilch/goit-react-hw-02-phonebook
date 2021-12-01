@@ -1,5 +1,6 @@
-import { number } from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import s from './ContactForm.module.css';
 
 export default class ContactForm extends Component {
   state = {
@@ -10,7 +11,7 @@ export default class ContactForm extends Component {
   handleChange = event => {
     const { name, value } = event.currentTarget;
     // console.log(event.currentTarget)
-    this.setState({ [name]: value, [number]: value });
+    this.setState({ [name]: value });
   };
 
   handleSubmit = event => {
@@ -27,7 +28,7 @@ export default class ContactForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className={s.form}>
         <label>
           Name
           <input
@@ -38,6 +39,7 @@ export default class ContactForm extends Component {
             required
             value={this.state.name}
             onChange={this.handleChange}
+            className={s.nameinput}
           />
         </label>
         <label>
@@ -50,10 +52,17 @@ export default class ContactForm extends Component {
             required
             value={this.state.number}
             onChange={this.handleChange}
+            className={s.numberinput}
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button type="submit" className={s.addbutton}>
+          Add contact
+        </button>
       </form>
     );
   }
 }
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func,
+};

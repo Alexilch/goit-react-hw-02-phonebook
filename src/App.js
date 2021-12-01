@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import { nanoid } from 'nanoid';
-import ContactForm from './Components/ContactForm';
-import ContactLIst from './Components/ContactList';
-import Filter from './Components/Filter/Filter';
 import { error } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
+
+import ContactForm from './Components/ContactForm';
+import ContactLIst from './Components/ContactList';
+import Filter from './Components/Filter/Filter';
+import Title from './Components/Title/Title';
 
 class App extends Component {
   state = {
@@ -23,12 +25,13 @@ class App extends Component {
 
   formHandler = data => {
     const { name, number } = data;
-    console.log(data);
+    // console.log(data);
     const newContact = {
       id: nanoid(5),
       name,
       number,
     };
+
     const { contacts } = this.state;
 
     if (
@@ -40,15 +43,12 @@ class App extends Component {
         text: 'That name is already in the list!',
         delay: 1500,
       });
-
       return;
     }
-
     this.setState(({ contacts }) => ({
       contacts: [...contacts, newContact],
     }));
-
-    console.log(contacts);
+    // console.log(contacts);
   };
 
   contactFilter = () => {
@@ -64,18 +64,21 @@ class App extends Component {
     this.setState({ filter: event.currentTarget.value });
   };
 
+  contactDelete = id => {
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
   render() {
     const contactsFilter = this.contactFilter();
     return (
       <div className="App">
-        <h1>Phone book</h1>
-
+        <Title title={'Phone book'} />
         <ContactForm onSubmit={this.formHandler} />
-        <div>
-          <h2>Contacts</h2>
-          <Filter value={this.filter} onChange={this.changeFilter} />
-          <ContactLIst contacts={contactsFilter} />
-        </div>
+        <Title title={'Contacts'} />
+        <Filter value={this.filter} onChange={this.changeFilter} />
+        <ContactLIst contacts={contactsFilter} onDelete={this.contactDelete} />
       </div>
     );
   }

@@ -1,0 +1,11 @@
+.filterlabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.filterlabel input {
+  margin-top: 5px;
+  height: 25px;
+  border-radius: 5px;
+  background-color: rgba(45, 35, 66, 0.4);
+}
