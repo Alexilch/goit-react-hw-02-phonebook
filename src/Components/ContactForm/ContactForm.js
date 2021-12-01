@@ -39,7 +39,6 @@ export default class ContactForm extends Component {
             required
             value={this.state.name}
             onChange={this.handleChange}
-            className={s.nameinput}
           />
         </label>
         <label>
@@ -52,7 +51,6 @@ export default class ContactForm extends Component {
             required
             value={this.state.number}
             onChange={this.handleChange}
-            className={s.numberinput}
           />
         </label>
         <button type="submit" className={s.addbutton}>
