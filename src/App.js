@@ -5,10 +5,10 @@ import { error } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
-import ContactForm from './Components/ContactForm';
-import ContactLIst from './Components/ContactList';
-import Filter from './Components/Filter/Filter';
-import Title from './Components/Title/Title';
+import ContactForm from './components/ContactForm';
+import ContactLIst from './components/ContactList';
+import Filter from './components/Filter/Filter';
+import Title from './components/Title/Title';
 
 class App extends Component {
   state = {
@@ -32,12 +32,11 @@ class App extends Component {
     };
 
     const { contacts } = this.state;
+    const existingName = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase(),
+    );
 
-    if (
-      contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase(),
-      )
-    ) {
+    if (existingName) {
       error({
         text: 'That name is already in the list!',
         delay: 1500,
