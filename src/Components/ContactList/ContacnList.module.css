@@ -5,21 +5,14 @@
 }
 .contactlistitem {
   margin: 10px;
-  align-content: center;
 }
-
-.deletebutton {
+.itemcontentwrap{
+  display: inline-flex;
+  align-items: center;
+}
+.contactname{
+font-weight: 600;
+}
+.contactnumber{
   margin-left: 10px;
-  width: 20px;
-  height: 20px;
-  border: transparent;
-  border-radius: 50px;
-  background-size: cover;
-}
-.deletebutton:hover {
-  background-color: rgba(45, 35, 66, 0.4);
-  transform: scale(1.08);
-}
-.deletebutton:active {
-  background-color: rgba(118, 74, 214, 0.4);
 }

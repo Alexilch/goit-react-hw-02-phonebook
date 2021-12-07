@@ -1,0 +1,17 @@
+.iconbutton {
+    margin-left: 5px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .iconbutton:hover {
+    background-color: rgba(45, 35, 66, 0.4);
+    transform: scale(1.08);
+  }
+  .iconbutton:active {
+    background-color: rgba(118, 74, 214, 0.4);
+  }

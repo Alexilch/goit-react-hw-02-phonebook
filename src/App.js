@@ -23,6 +23,21 @@ class App extends Component {
     number: '',
   };
 
+  componentDidMount(){
+    const contacts = localStorage.getItem('contacts');
+    const parsedContatcts = JSON.parse(contacts);
+
+    if (parsedContatcts) {
+      this.setState({contacts: parsedContatcts});
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts',  JSON.stringify(this.state.contacts))
+    }
+  }
+
   formHandler = data => {
     const { name, number } = data;
     const newContact = {
